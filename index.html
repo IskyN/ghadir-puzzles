@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <style>
+        html, body {
+            overflow: hidden;
+        }
+
+        body {
+            font-size: 100%;
+        }
+
+        body, html, .container-fluid, .row, .col, .btn {
+            height: 100%;
+        }
+
+        .container-fluid {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        .img-btn {
+            background-size: cover;
+            background: no-repeat center center;
+            /*font-size: 150% !important;*/
+            color: #2a2a6f !important;
+            font-weight: bold !important;
+            white-space: normal !important;
+        }
+
+        .img-btn:hover {
+            box-shadow: inset 0 0 0 100vmax rgba(0, 0, 0, .4);
+            color: #2a2a6f90;
+            font-size: 125%;
+        }
+
+        #backBtn {
+            display: block; /* Shown by default */
+            position: fixed; /* Fixed/sticky position */
+            top: 0;
+            left: 0;
+            z-index: 99; /* Make sure it does not overlap */
+            border: none; /* Remove borders */
+            outline: none; /* Remove outline */
+            background-color: red; /* Set a background color */
+            color: white; /* Text color */
+            cursor: pointer; /* Add a mouse pointer on hover */
+            padding: 15px; /* Some padding */
+            border-radius: 10px; /* Rounded corners */
+            font-size: 1em; /* Increase font size */
+        }
+
+        #backBtn:hover {
+            background-color: #555; /* Add a dark-grey background on hover */
+        }
+
+    </style>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+</head>
+<body>
+<button onclick="backFunction()" id="backBtn" title="Back">⭯</button>
+<div id="select_puzzle" class="container-fluid d-flex flex-column no-gutters">
+    <div class="row align-items-center btn-group no-gutters">
+        <div class="col col-3">
+            <a class="btn btn-primary btn-block img-btn d-flex align-items-center justify-content-center"
+               id="puzzle1" style="background-image: url('img/puzzle1.jpg')"
+               href="#select_diff">
+                Button A
+            </a>
+        </div>
+        <div class="col col-3">
+            <a class="btn btn-primary btn-block img-btn d-flex align-items-center justify-content-center"
+               id="puzzle2" style="background-image: url('img/puzzle2.jpg')" href="#">
+                Button B
+            </a>
+        </div>
+        <div class="col col-3">
+            <a class="btn btn-primary btn-block img-btn d-flex align-items-center justify-content-center"
+               id="puzzle3" style="background-image: url('img/puzzle3.jpg')" href="#">
+                Button C
+            </a>
+        </div>
+        <div class="col col-3">
+            <a class="btn btn-primary btn-block img-btn d-flex align-items-center justify-content-center"
+               id="puzzle4" style="background-image: url('img/puzzle4.jpg')" href="#">
+                Button D
+            </a>
+        </div>
+    </div>
+    <div class="row align-items-center no-gutters">
+        <div class="col col-3">
+            <a class="btn btn-primary btn-block img-btn d-flex align-items-center justify-content-center"
+               id="puzzle5" style="background-image: url('img/puzzle5.jpg')" href="#">
+                Button E
+            </a>
+        </div>
+        <div class="col col-3">
+            <a class="btn btn-primary btn-block img-btn d-flex align-items-center justify-content-center"
+               id="puzzle6" style="background-image: url('img/puzzle6.jpg')">
+                Button F
+            </a>
+        </div>
+        <div class="col col-3">
+            <a class="btn btn-primary btn-block img-btn d-flex align-items-center justify-content-center"
+               id="puzzle7" style="background-image: url('img/puzzle7.jpg')">
+                Button E
+            </a>
+        </div>
+        <div class="col col-3">
+            <a class="btn btn-primary btn-block img-btn d-flex align-items-center justify-content-center"
+               id="puzzle8" style="background-image: url('img/puzzle8.jpg')">
+                Button 8
+            </a>
+        </div>
+    </div>
+</div>
+<div id="select_diff" class="container-fluid d-flex flex-column no-gutters">
+    <div class="row align-items-center btn-group no-gutters">
+        <div class="col">
+            <button class="btn btn-primary btn-block bg-info diff-btn" style="font-size: 150%;"
+               id="puzzle_easy">
+                Easy
+            </button>
+        </div>
+        <div class="col">
+            <button class="btn btn-primary btn-block bg-warning diff-btn" style="font-size: 150%;"
+               id="puzzle_med">
+               <!--onclick="history.back().scrollintoview()">-->
+                Medium
+            </button>
+        </div>
+        <div class="col">
+            <button class="btn btn-primary btn-block bg-danger diff-btn" style="font-size: 150%;"
+               id="puzzle_hard">
+               <!--onclick="history.back().scrollintoview()">-->
+                Hard
+            </button>
+        </div>
+    </div>
+</div>
+<!--<div style="display: none">-->
+<iframe id="puzzle_frame" style="width:100%;height:100vh" frameborder=0
+src="http://www.jigsawplanet.com/?rc=play&amp;pid=247eb7098504&amp;view=iframe"
+title="online jigsaw puzzle - 12 pieces">
+[Your web browser does not support frames or is currently configured not to display frames.]
+</iframe>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script>
+    var prev_hash_used = "#select_puzzle";
+    var selected_puzzle = "";
+    var selected_diff = "";
+    function removeJPLink() {
+        $("select[title='cars']")
+    }
+
+    // $(window).on('hashchange', function () {
+    //     let offset = $(window.location.hash).position();
+    //     if (jQuery.isEmptyObject(offset)) {
+    //         console.log("empty");
+    //         // $('html, body').animate({
+    //         //     scrollTop: 0,
+    //         //     scrollLeft: 0
+    //         // });
+    //     }
+    //     else {
+    //         console.log("top", offset.top);
+    //         console.log("left", offset.left);
+    //         // $('html, body').animate({
+    //         //     scrollTop: offset.top,
+    //         //     scrollLeft: offset.left
+    //         // });
+    //     }
+    //     // $(window).scrollTo(top);
+    // });
+
+    let url_dict = {
+        "puzzle1": {
+            "easy": "247eb7098504",
+            "med": "3ba2d689d257",
+            "hard": "03d383f9877d"
+        },
+        "puzzle2": {
+            "easy": "0c59b2a1f1d7",
+            "med": "2cf56d1ed812",
+            "hard": "24b65113c303"
+        },
+        "puzzle3": {
+            "easy": "23b707a8c802",
+            "med": "2b3c7409d9f1",
+            "hard": "13858bf5f366",
+        },
+        "puzzle4": {
+            "easy": "35f2c5542d4f",
+            "med": "3e511a487338",
+            "hard": "268c8a9684ab"
+        },
+        "puzzle5": {
+            "easy": "3612a64b9a12",
+            "med": "19fc09cb5bf5",
+            "hard": "2145960f779f"
+        },
+        "puzzle6": {
+            "easy": "0eabbef70a18",
+            "med": "1efd0ec7bfdd",
+            "hard": "3113438919ea"
+        },
+        "puzzle7": {
+            "easy": "3f66e3e75cad",
+            "med": "37edd43dfeee",
+            "hard": "0877554336b9"
+        },
+        "puzzle8": {
+            "easy": "3f8c30940d83",
+            "med": "3707747e3dd5",
+            "hard": "28db8a2f7180"
+        }
+    };
+
+    $('a.img-btn').click(function() {
+        selected_puzzle = this.id;
+        console.log("selected puzz: ", selected_puzzle);
+    });
+
+    $('button.diff-btn').click(function() {
+        selected_diff = this.id.substring(7);
+        console.log("selected diff: ", selected_diff);
+    });
+
+    function backFunction() {
+        // console.log("loc 1:", window.location);
+        window.location.hash = prev_hash_used;
+        // console.log("loc 2:", window.location);
+        // $(prev_hash_used)[0].scrollIntoView();
+        // console.log("scrolled");
+        prev_hash_used = '#select_puzzle';
+    }
+</script>
+</body>
+</html>
